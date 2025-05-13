@@ -2,6 +2,7 @@
 #define __PAYSTRATEGIES_H
 class PayStrategy {
 public:
-  virtual float calculate(unsigned int minutes) = 0;
+  /** Calculates time purchased by 'cents'. */
+  virtual float calculate(unsigned int cents) = 0;
 };
 #endif

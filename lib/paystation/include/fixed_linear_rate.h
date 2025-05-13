@@ -2,17 +2,20 @@
 #define __FIXED_LINEAR_RATE_H
 #include "paystrategy.h"
 
+/**
+ * FixedLinearRate(0, .2) would yield 2 minutes of time per 5 cents spent.
+ */
 class FixedLinearRate : public PayStrategy {
 private:
   float rate;
-  float base;
+  unsigned int base;
 
 public:
-  /**
-   * Calculates time based on a set base charge and a linear rate.
+  /*
+   * rate*cents + base
    */
-  FixedLinearRate(const float base, const float r);
+  FixedLinearRate(const unsigned int b, const float r);
 
-  float calculate(const unsigned int time) override;
+  float calculate(const unsigned int cents) override;
 };
 #endif

@@ -1,5 +1,6 @@
 #include "paystation.h"
 #include <iostream>
+#include <memory>
 
 Paystation::Paystation(PayStrategy *r) {
   rate = std::unique_ptr<PayStrategy>(r);
@@ -25,4 +26,6 @@ void Paystation::readDisplay() {
   std::cout << "Time: " << rate->calculate(balance) << '\n';
 }
 
-
+void Paystation::setPayStrategy(PayStrategy *ps) {
+  rate = std::unique_ptr<PayStrategy>(ps);
+}

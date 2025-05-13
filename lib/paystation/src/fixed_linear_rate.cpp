@@ -1,7 +1,10 @@
 #include "fixed_linear_rate.h"
 
-FixedLinearRate::FixedLinearRate(float b, float r) { rate = r; base = b; }
+FixedLinearRate::FixedLinearRate(unsigned int b, float r) {
+  base = b;
+  rate = r;
+}
 
-float FixedLinearRate::calculate(unsigned int minutes) {
-  return (float)minutes * rate;
+float FixedLinearRate::calculate(unsigned int cents) {
+  return (base + rate*cents);
 }
