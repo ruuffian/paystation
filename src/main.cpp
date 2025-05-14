@@ -2,16 +2,14 @@
 #include <iostream>
 
 #include "Menu/Menu.h"
-#include "MenuOptions/Echo.h"
+#include "MenuOptions/BuyParking.h"
 #include "MenuOptions/Exit.h"
 #include "MenuOptions/InsertCoin.h"
-#include "MenuOptions/ReadPaystation.h"
-#include "MenuOptions/Submenu.h"
+#include "MenuOptions/ReadMeter.h"
 #include "Paystation.h"
 #include "Paystrategies/FixedLinearRate.h"
 
 void clrscr();
-// void printPaystationDisplay(Paystation *ps);
 
 int main() {
   /* Paystation Initializations
@@ -23,13 +21,11 @@ int main() {
    */
   FixedLinearRate *flr = new FixedLinearRate(0, 0.5);
   Paystation *ps = new Paystation(flr, "1234");
-  ps->insertCoin(25);
   /* UI Initializations */
   Menu *main_menu = new Menu();
-  main_menu->addMenuOption(new MenuOptions::Echo());
-  main_menu->addMenuOption(new MenuOptions::ReadPaystation(ps));
+  main_menu->addMenuOption(new MenuOptions::ReadMeter(ps));
+  main_menu->addMenuOption(new MenuOptions::BuyParking(ps));
   main_menu->addMenuOption(new MenuOptions::InsertCoin(ps));
-  main_menu->addMenuOption(new MenuOptions::Submenu());
   main_menu->addMenuOption(new MenuOptions::Exit());
   clrscr();
   /* Main loop */

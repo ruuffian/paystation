@@ -4,13 +4,13 @@
 #include <string>
 
 namespace MenuOptions {
-class ReadPaystation : public MenuOption {
+class BuyParking : public MenuOption {
 private:
   Paystation *ps_;
 
 public:
-  ReadPaystation(Paystation *ps) : MenuOption("ReadPaystation"), ps_(ps) {}
+  BuyParking(Paystation *ps) : MenuOption("Buy Parking"), ps_(ps) {}
   void execute() override;
-  ~ReadPaystation();
+  ~BuyParking();
 };
 } // namespace MenuOptions

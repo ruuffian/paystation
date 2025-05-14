@@ -13,6 +13,7 @@ void MenuOptions::InsertCoin::execute() {
   } else {
     cout << "Invalid input." << '\n';
   }
+  cout << '\n' << '\n';
   cin.clear();
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }

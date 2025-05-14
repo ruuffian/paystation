@@ -28,6 +28,8 @@ std::string Paystation::buy() {
   std::ostringstream s;
   s << "Total: " << state_->balance << '\n';
   s << "Minutes purchased: " << state_->timePurchased << '\n';
+  state_->balance = 0;
+  state_->timePurchased = 0;
   return s.str();
 }
 

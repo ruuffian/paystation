@@ -22,6 +22,7 @@ MenuOption *Menu::processInput(const int &id) {
 void Menu::runMenu() {
   while (!should_exit_) {
     print();
+    std::cout << '\n';
     int user_in;
     if (std::cin >> user_in) {
       MenuOption *selected_option = processInput(user_in);
