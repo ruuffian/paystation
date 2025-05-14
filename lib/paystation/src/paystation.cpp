@@ -1,12 +1,11 @@
 #include "paystation.h"
-#include <iostream>
-#include <memory>
 
 Paystation::Paystation(PayStrategy *r) {
-  rate = std::unique_ptr<PayStrategy>(r);
+  ps = new PaystationState{0, 0};
+  rate = r;
 }
 
-int Paystation::insertCoin(const int &coin) {
+std::optional<Cents> Paystation::insertCoin(const unsigned int &coin) {
   switch (coin) {
   case 1:
   case 5:
@@ -15,17 +14,13 @@ int Paystation::insertCoin(const int &coin) {
   case 100:
     break;
   default:
-    return -1;
+    // Do something else
+    break;
   }
-  balance += coin;
-  return balance;
+  ps->balance += coin;
+  return ps->balance;
 }
 
-void Paystation::readDisplay() {
-  std::cout << "Balance: " << balance << '\n';
-  std::cout << "Time: " << rate->calculate(balance) << '\n';
-}
+PaystationState *Paystation::getState() { return ps; }
 
-void Paystation::setPayStrategy(PayStrategy *ps) {
-  rate = std::unique_ptr<PayStrategy>(ps);
-}
+void Paystation::setPayStrategy(PayStrategy *ps) { rate = ps; }

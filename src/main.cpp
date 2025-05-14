@@ -2,76 +2,60 @@
 #include <iostream>
 #include <string>
 
-#include "fixed_linear_rate.h"
-#include "paystation.h"
+#include "Menu.h"
+#include "MenuOptions.h"
+// #include "paystation.h"
 
-typedef struct StateTag {
-  int shouldExit;
+// #include "fixed_linear_rate.h"
+
+struct UiState {
+  short int shouldExit;
   std::string input;
-  Paystation *ps;
-} State;
-
-class Choice {
-private:
-  std::string name;
-
-public:
-  Choice(std::string n) { name = n; }
-  std::string getName() { return name; }
-  virtual void execute(State &s) = 0;
-};
-
-class ExitChoice : public Choice {
-  using Choice::Choice;
-  void execute(State &s) override {
-    std::cout << "Good-bye..." << '\n';
-    s.shouldExit = 1;
-  }
-};
-
-class RepeatChoice : public Choice {
-  using Choice::Choice;
-  void execute(State &s) override { std::cout << s.input << '\n'; }
 };
 
 void clrscr();
-void printChoices(const auto &choices);
+// void printPaystationDisplay(Paystation *ps);
 
 int main() {
-  /* Initializations */
-  std::unordered_map<char, Choice *> choiceMap = {
-      {'e', new ExitChoice("Exit")}, {'r', new RepeatChoice("Repeat")}};
-  clrscr();
+  /* UI Initializations */
+  Menu *menu = new Menu();
+  menu->addMenuOption(new ExitMenuOption(1));
+  menu->addMenuOption(new EchoMenuOption(2));
+  UiState state = {0, ""};
+  /* Paystation Initializations */
+  /*
   FixedLinearRate *flr = new FixedLinearRate(0, 0.5);
-  State state = {0, "", new Paystation(flr)};
+  Paystation *ps = new Paystation(flr);
+  */
+  clrscr();
 
   /* Main loop */
+  int choice;
   std::cout << "Welcome to Paystation!" << '\n' << '\n';
   while (!state.shouldExit) {
-    printChoices(choiceMap);
-    std::getline(std::cin, state.input);
-    if (state.input.size() == 0)
-      continue;
-    if (choiceMap.find(std::tolower(state.input[0])) != choiceMap.end()) {
-      Choice *choice = choiceMap.at(std::tolower(state.input[0]));
-      choice->execute(state);
-    } else {
-      state.input = "";
+    // printPaystationDisplay(ps);
+    menu->print();
+    // What happens when a non-integer is entered?
+    std::cin >> choice;
+    MenuOption *mo = menu->selectMenuOption(choice);
+    if (mo == NULL) {
+      std::cout << "Invalid input, please try again." << '\n';
       continue;
     }
+    mo->execute();
+    /* Ew. */
+    if (mo->getName() == "Exit")
+      state.shouldExit = 1;
   }
   return 0;
 }
 
-void printChoices(const auto &choices) {
-  using namespace std;
-  cout << "Please select an option:" << '\n';
-  for (const auto &[key, value] : choices) {
-    std::string n = value->getName();
-    cout << '\t';
-    cout << "[" << n[0] << "]";
-    cout << n.substr(1, n.size()) << '\n';
-  }
-}
-
+/* This is a one-line answer to an Operating Systems lab question :-) */
 void clrscr() { std::cout << "\033[2J\033[1;1H"; }
+
+/*void printPaystationDisplay(Paystation *ps) {
+  using namespace std;
+  PaystationState *pss = ps->getState();
+  cout << "Money Inserted: " << pss->balance << '\n';
+  cout << "Minutes: " << pss->timePurchased << '\n';
+}*/

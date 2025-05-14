@@ -1,5 +1,4 @@
-#ifndef __FIXED_LINEAR_RATE_H
-#define __FIXED_LINEAR_RATE_H
+#pragma once
 #include "paystrategy.h"
 
 /**
@@ -18,4 +17,3 @@ public:
 
   float calculate(const unsigned int cents) override;
 };
-#endif

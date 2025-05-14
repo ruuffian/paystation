@@ -6,5 +6,5 @@ FixedLinearRate::FixedLinearRate(unsigned int b, float r) {
 }
 
 float FixedLinearRate::calculate(unsigned int cents) {
-  return (base + rate*cents);
+  return (float(base) + rate * float(cents));
 }

@@ -1,7 +1,7 @@
 { pkgs ? import <nixpkgs> {} }:
 
 pkgs.mkShell {
-  nativeBuildInputs = with pkgs; [ cmake gcc clang-tools clang valgrind ];
+  nativeBuildInputs = with pkgs; [ cmake gcc clang-tools clang valgrind gdb ];
   buildInputs = with pkgs; [
     cowsay
   ];

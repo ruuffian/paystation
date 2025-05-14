@@ -1,0 +1,27 @@
+#include "Menu.h"
+#include <iostream>
+
+MenuOption *Menu::addMenuOption(MenuOption *mo) {
+  auto lookup = options_.find(mo->getId());
+  options_[mo->getId()] = mo;
+  if (lookup != options_.end()) {
+    return lookup->second;
+  }
+  return mo;
+}
+
+MenuOption *Menu::selectMenuOption(const int &id) {
+  auto lookup = options_.find(id);
+  if (lookup != options_.end()) {
+    return lookup->second;
+  }
+  return NULL;
+}
+
+void Menu::print() {
+  using namespace std;
+  cout << "Please select an option:" << '\n';
+  for (const auto &[id, opt] : options_) {
+    cout << '\t' << id << " : " << opt->getName() << '\n';
+  }
+}
