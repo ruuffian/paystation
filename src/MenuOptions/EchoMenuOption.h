@@ -1,5 +1,5 @@
 #pragma once
-#include "MenuOption.h"
+#include "Menu/MenuOption.h"
 #include <string>
 
 class EchoMenuOption : public MenuOption {

@@ -28,24 +28,24 @@ add_subdirectory( lib/paystation )
 set( 
   SOURCES 
   src/main.cpp 
-  src/Menu.cpp
-  src/MenuOption.cpp
-  src/EchoMenuOption.cpp
-  src/SubMenuOption.cpp
-  src/ExitMenuOption.cpp
+  src/Menu/Menu.cpp
+  src/Menu/MenuOption.cpp
+  src/MenuOptions/EchoMenuOption.h
+  src/MenuOptions/EchoMenuOption.cpp
+  src/MenuOptions/SubMenuOption.h
+  src/MenuOptions/SubMenuOption.cpp
+  src/MenuOptions/ExitMenuOption.h
+  src/MenuOptions/ExitMenuOption.cpp
 )
 
-set( 
-  INCLUDES 
-  include/Menu.h
-  include/MenuOption.h
-  include/EchoMenuOption.h
-  include/SubMenuOption.h
-  include/ExitMenuOption.h
+set(
+  INCLUDES
+  include/Menu/Menu.h
+  include/Menu/MenuOption.h
 )
 
 add_executable( main.exe ${SOURCES} ${INCLUDES} )
 
-target_include_directories(main.exe PRIVATE include)
+target_include_directories(main.exe PRIVATE include include/Menu)
 
 target_link_libraries( main.exe PRIVATE paystation )

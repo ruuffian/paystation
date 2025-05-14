@@ -1,10 +1,10 @@
 #include <cctype>
 #include <iostream>
 
-#include "EchoMenuOption.h"
-#include "ExitMenuOption.h"
-#include "Menu.h"
-#include "SubMenuOption.h"
+#include "Menu/Menu.h"
+#include "MenuOptions/EchoMenuOption.h"
+#include "MenuOptions/ExitMenuOption.h"
+#include "MenuOptions/SubMenuOption.h"
 // #include "paystation.h"
 
 // #include "fixed_linear_rate.h"

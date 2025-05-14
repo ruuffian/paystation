@@ -1,6 +1,6 @@
 #pragma once
-#include "Menu.h"
-#include "MenuOption.h"
+#include "Menu/Menu.h"
+#include "Menu/MenuOption.h"
 
 class SubMenuOption : public MenuOption {
 private:
