@@ -17,7 +17,6 @@ private:
 
 public:
   Paystation(PayStrategy *rate);
-  // Returns the balance, or -1 if coin is not accepted.
   std::optional<Cents> insertCoin(const Cents &);
   PaystationState *getState();
   //  Receipt buy(float price, int hours, int minutes);

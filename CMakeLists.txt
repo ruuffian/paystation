@@ -32,6 +32,8 @@ set(
   src/Menu/MenuOption.cpp
   src/MenuOptions/Echo.h
   src/MenuOptions/Echo.cpp
+  src/MenuOptions/ReadPaystation.h
+  src/MenuOptions/ReadPaystation.cpp
   src/MenuOptions/Submenu.h
   src/MenuOptions/Submenu.cpp
   src/MenuOptions/Exit.h
