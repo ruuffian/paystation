@@ -1,26 +1,39 @@
 #include "Paystation.h"
+#include <sstream>
 
-Paystation::Paystation(PayStrategy *r) {
-  ps = new PaystationState{0, 0};
-  rate = r;
+Paystation::Paystation(PayStrategy *ps, std::string ap) {
+  state_ = new PaystationState{0, 0};
+  pay_strategy_ = ps;
+  pin_ = ap;
 }
 
-std::optional<Cents> Paystation::insertCoin(const unsigned int &coin) {
+Cents Paystation::insertCoin(const unsigned int &coin) {
   switch (coin) {
   case 1:
   case 5:
   case 10:
   case 25:
   case 100:
-    break;
+    state_->balance += coin;
+    state_->timePurchased = pay_strategy_->calculate(state_->balance);
+    return 0;
   default:
-    // Do something else
-    break;
+    return coin;
   }
-  ps->balance += coin;
-  return ps->balance;
 }
 
-PaystationState *Paystation::getState() { return ps; }
+PaystationState *Paystation::getState() { return state_; }
 
-void Paystation::setPayStrategy(PayStrategy *ps) { rate = ps; }
+std::string Paystation::buy() {
+  std::ostringstream s;
+  s << "Total: " << state_->balance << '\n';
+  s << "Minutes purchased: " << state_->timePurchased << '\n';
+  return s.str();
+}
+
+PayStrategy *Paystation::setPayStrategy(PayStrategy *ps) {
+  /* Can be replaced with std::exchange() */
+  auto old = pay_strategy_;
+  pay_strategy_ = ps;
+  return old;
+}

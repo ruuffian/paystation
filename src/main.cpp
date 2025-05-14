@@ -4,6 +4,7 @@
 #include "Menu/Menu.h"
 #include "MenuOptions/Echo.h"
 #include "MenuOptions/Exit.h"
+#include "MenuOptions/InsertCoin.h"
 #include "MenuOptions/ReadPaystation.h"
 #include "MenuOptions/Submenu.h"
 #include "Paystation.h"
@@ -21,12 +22,13 @@ int main() {
    * over the place
    */
   FixedLinearRate *flr = new FixedLinearRate(0, 0.5);
-  Paystation *ps = new Paystation(flr);
+  Paystation *ps = new Paystation(flr, "1234");
   ps->insertCoin(25);
   /* UI Initializations */
   Menu *main_menu = new Menu();
   main_menu->addMenuOption(new MenuOptions::Echo());
   main_menu->addMenuOption(new MenuOptions::ReadPaystation(ps));
+  main_menu->addMenuOption(new MenuOptions::InsertCoin(ps));
   main_menu->addMenuOption(new MenuOptions::Submenu());
   main_menu->addMenuOption(new MenuOptions::Exit());
   clrscr();

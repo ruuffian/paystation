@@ -10,6 +10,7 @@ C++ (and, apparently, CMake).
 
 ### Roadmap
 
+* doxygen
 * Cross-Platform compilation
 * GNU Readline tui 
 * ncurses tui

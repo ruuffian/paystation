@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Paystrategy.h"
-#include <optional>
+#include <string>
 
 typedef unsigned int Minutes;
 
@@ -12,15 +12,28 @@ struct PaystationState {
 
 class Paystation {
 private:
-  struct PaystationState *ps;
-  PayStrategy *rate;
+  struct PaystationState *state_;
+  PayStrategy *pay_strategy_;
+  std::string pin_;
 
 public:
-  Paystation(PayStrategy *rate);
-  std::optional<Cents> insertCoin(const Cents &);
-  PaystationState *getState();
-  //  Receipt buy(float price, int hours, int minutes);
-  //  std::unordered_map<int, int> cancel();
+  Paystation(PayStrategy *rate, std::string admin_pin);
+  /**
+   * Accepts a non-negative coin value, validates it is American currency, and
+   * adds it to ps_->balance. Additionally, ps_->timePurchased is recalculated.
+   * Returns 0 when successfuly and the inserted amount when not.
+   */
+  Cents insertCoin(const Cents &);
+  /**
+   * Returns a copy of the Paystation state. Editing this memory is considered
+   * undefined behavior.
+   */
+  struct PaystationState *getState();
+  std::string buy();
+  //  cancel();
   //  int empty();
-  void setPayStrategy(PayStrategy *);
+  /**
+   * Sets a new paystrategy and returns the old one.
+   */
+  PayStrategy *setPayStrategy(PayStrategy *);
 };
