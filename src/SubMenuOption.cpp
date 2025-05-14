@@ -3,7 +3,6 @@
 #include "ExitMenuOption.h"
 #include "Menu.h"
 #include <iostream>
-#include <limits>
 
 SubMenuOption::SubMenuOption(const int id) : MenuOption(id, "SubMenu") {
   sub_menu_ = new Menu();
@@ -12,27 +11,8 @@ SubMenuOption::SubMenuOption(const int id) : MenuOption(id, "SubMenu") {
 }
 
 void SubMenuOption::execute() {
-  int should_exit = 0;
   std::cout << "Welcome to the sub-menu!" << '\n';
-  while (!should_exit) {
-    sub_menu_->print();
-    int user_in;
-    if (std::cin >> user_in) {
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-      MenuOption *selected_option = sub_menu_->processInput(user_in);
-      if (selected_option == NULL) {
-        std::cout << "Please enter a valid menu option." << '\n';
-        continue;
-      }
-      selected_option->execute();
-      if (selected_option->getName() == "Exit")
-        should_exit = 1;
-    } else {
-      std::cout << "Please enter a valid menu option." << '\n';
-      std::cin.clear();
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    }
-  }
+  sub_menu_->runMenu();
 }
 
 /* Calling delete on a null pointer is ok :> */

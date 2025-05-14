@@ -1,6 +1,5 @@
 #include <cctype>
 #include <iostream>
-#include <limits>
 
 #include "EchoMenuOption.h"
 #include "ExitMenuOption.h"
@@ -24,7 +23,6 @@ int main() {
   main_menu->addMenuOption(new EchoMenuOption(1));
   main_menu->addMenuOption(new SubMenuOption(2));
   main_menu->addMenuOption(new ExitMenuOption(3));
-  int should_exit{0};
   /* Paystation Initializations
    * We initialize here to pass the Paystation class around by reference,
    * avoiding copies and allowing us to edit the guts via some setter methods.
@@ -37,26 +35,7 @@ int main() {
   clrscr();
   /* Main loop */
   std::cout << "Welcome to Paystation!" << '\n' << '\n';
-  while (!should_exit) {
-    main_menu->print();
-    int user_in;
-    if (std::cin >> user_in) {
-      MenuOption *selected_option = main_menu->processInput(user_in);
-      if (selected_option == NULL) {
-        std::cout << "Invalid input, please try again." << '\n';
-        continue;
-      }
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-      selected_option->execute();
-      /* Ew. */
-      if (selected_option->getName() == "Exit")
-        should_exit = 1;
-    } else {
-      std::cout << "Please enter a valid menu option." << '\n';
-      std::cin.clear();
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    }
-  }
+  main_menu->runMenu();
   delete main_menu;
   return 0;
 }

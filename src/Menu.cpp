@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include <iostream>
+#include <limits>
 
 MenuOption *Menu::addMenuOption(MenuOption *mo) {
   auto lookup = options_.find(mo->getId());
@@ -16,6 +17,29 @@ MenuOption *Menu::processInput(const int &id) {
     return lookup->second;
   }
   return NULL;
+}
+
+void Menu::runMenu() {
+  while (!should_exit_) {
+    print();
+    int user_in;
+    if (std::cin >> user_in) {
+      MenuOption *selected_option = processInput(user_in);
+      if (selected_option == NULL) {
+        std::cout << "Invalid input, please try again." << '\n';
+        continue;
+      }
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      selected_option->execute();
+      /* Ew. */
+      if (selected_option->getName() == "Exit")
+        should_exit_ = 1;
+    } else {
+      std::cout << "Please enter a valid menu option." << '\n';
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+  }
 }
 
 void Menu::print() {
