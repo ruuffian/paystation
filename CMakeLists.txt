@@ -29,14 +29,19 @@ set(
   SOURCES 
   src/main.cpp 
   src/Menu.cpp
-  src/MenuOptions.cpp
+  src/MenuOption.cpp
+  src/EchoMenuOption.cpp
+  src/SubMenuOption.cpp
+  src/ExitMenuOption.cpp
 )
 
 set( 
   INCLUDES 
   include/Menu.h
   include/MenuOption.h
-  include/MenuOptions.h
+  include/EchoMenuOption.h
+  include/SubMenuOption.h
+  include/ExitMenuOption.h
 )
 
 add_executable( main.exe ${SOURCES} ${INCLUDES} )
