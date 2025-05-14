@@ -1,7 +1,7 @@
-#include "EchoMenuOption.h"
+#include "Echo.h"
 #include <iostream>
 
-void EchoMenuOption::execute() {
+void MenuOptions::Echo::execute() {
   using namespace std;
   cout << "Message: ";
   string in;
@@ -10,4 +10,4 @@ void EchoMenuOption::execute() {
   getline(std::cin, in);
   cout << in << '\n';
 }
-EchoMenuOption::~EchoMenuOption() {}
+MenuOptions::Echo::~Echo() {}

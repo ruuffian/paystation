@@ -2,9 +2,9 @@
 #include <iostream>
 
 #include "Menu/Menu.h"
-#include "MenuOptions/EchoMenuOption.h"
-#include "MenuOptions/ExitMenuOption.h"
-#include "MenuOptions/SubMenuOption.h"
+#include "MenuOptions/Echo.h"
+#include "MenuOptions/Exit.h"
+#include "MenuOptions/Submenu.h"
 // #include "paystation.h"
 
 // #include "fixed_linear_rate.h"
@@ -20,9 +20,9 @@ int main() {
    * a client. Explicitly giving an id requires changes to multiple lines just
    * to add 1 option.
    */
-  main_menu->addMenuOption(new EchoMenuOption());
-  main_menu->addMenuOption(new SubMenuOption());
-  main_menu->addMenuOption(new ExitMenuOption());
+  main_menu->addMenuOption(new MenuOptions::Echo());
+  main_menu->addMenuOption(new MenuOptions::Submenu());
+  main_menu->addMenuOption(new MenuOptions::Exit());
   /* Paystation Initializations
    * We initialize here to pass the Paystation class around by reference,
    * avoiding copies and allowing us to edit the guts via some setter methods.

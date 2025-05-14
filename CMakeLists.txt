@@ -30,12 +30,12 @@ set(
   src/main.cpp 
   src/Menu/Menu.cpp
   src/Menu/MenuOption.cpp
-  src/MenuOptions/EchoMenuOption.h
-  src/MenuOptions/EchoMenuOption.cpp
-  src/MenuOptions/SubMenuOption.h
-  src/MenuOptions/SubMenuOption.cpp
-  src/MenuOptions/ExitMenuOption.h
-  src/MenuOptions/ExitMenuOption.cpp
+  src/MenuOptions/Echo.h
+  src/MenuOptions/Echo.cpp
+  src/MenuOptions/Submenu.h
+  src/MenuOptions/Submenu.cpp
+  src/MenuOptions/Exit.h
+  src/MenuOptions/Exit.cpp
 )
 
 set(
