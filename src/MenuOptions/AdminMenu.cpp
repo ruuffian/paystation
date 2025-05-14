@@ -1,4 +1,5 @@
 #include "AdminMenu.h"
+#include "ChangeAdminPIN.h"
 #include "Exit.h"
 #include <iostream>
 
@@ -8,6 +9,8 @@ PaystationMenu::AdminMenu::AdminMenu(Paystation *ps)
   menu_->addMenuOption(NULL);
   /* Change Rate Strategy (another sub menu) */
   menu_->addMenuOption(NULL);
+  /* Change admin PIN */
+  menu_->addMenuOption(new AdministratorMenu::ChangeAdminPIN(ps_));
   /* Reboot */
   menu_->addMenuOption(NULL);
   /* Exit */

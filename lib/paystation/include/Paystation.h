@@ -3,6 +3,9 @@
 #include "Paystrategy.h"
 #include <string>
 
+#define ERR_SAME_PIN (1 << 0)
+#define ERR_UNKNOWN (2 << 0)
+
 typedef unsigned int Minutes;
 
 struct PaystationState {
@@ -39,4 +42,9 @@ public:
    */
   PayStrategy *setPayStrategy(PayStrategy *);
   bool checkAdminPIN(const std::string &pin);
+  /**
+   * Sets pin_ to pin. Returns 0 if successful, or ERR_SAME_PIN if the new pin
+   * is the same as the old one.
+   */
+  int setAdminPIN(const std::string pin);
 };

@@ -12,9 +12,8 @@ void PaystationMenu::InsertCoin::execute() {
     }
   } else {
     cout << "Invalid input." << '\n';
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
   }
   cout << '\n' << '\n';
-  cin.clear();
-  cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
-PaystationMenu::InsertCoin::~InsertCoin() {}

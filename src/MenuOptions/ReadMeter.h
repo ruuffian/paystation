@@ -11,6 +11,6 @@ private:
 public:
   ReadMeter(Paystation *ps) : MenuOption("Read Meter"), ps_(ps) {}
   void execute() override;
-  ~ReadMeter();
+  ~ReadMeter() = default;
 };
 } // namespace MenuOptions

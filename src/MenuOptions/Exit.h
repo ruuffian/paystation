@@ -10,6 +10,6 @@ private:
 public:
   Exit(Menu *m) : MenuOption("Exit"), menu_(m) {}
   void execute() override;
-  ~Exit();
+  ~Exit() = default;
 };
 } // namespace GenericMenuOption

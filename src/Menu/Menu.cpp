@@ -24,6 +24,7 @@ MenuOption *Menu::processInput(const int &id) {
 void Menu::exit() { should_exit_ = 1; }
 
 void Menu::runMenu() {
+  should_exit_ = 0;
   while (!should_exit_) {
     print();
     std::cout << '\n';
@@ -35,9 +36,10 @@ void Menu::runMenu() {
         selected_option->execute();
       } else {
         std::cout << "Invalid menu option." << '\n';
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
       }
+    } else {
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
   }
 }

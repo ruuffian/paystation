@@ -8,4 +8,3 @@ void PaystationMenu::ReadMeter::execute() {
   cout << "Time: " << state->timePurchased << '\n';
   cout << '\n' << '\n';
 }
-PaystationMenu::ReadMeter::~ReadMeter() {}

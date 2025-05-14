@@ -10,5 +10,5 @@ public:
   MenuOption(const std::string name) : name_(name) {}
   std::string getName() { return name_; }
   virtual void execute() = 0;
-  virtual ~MenuOption() = 0;
+  virtual ~MenuOption() = default;
 };

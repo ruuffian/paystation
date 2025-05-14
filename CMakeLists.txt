@@ -29,9 +29,10 @@ set(
   SOURCES 
   src/main.cpp 
   src/Menu/Menu.cpp
-  src/Menu/MenuOption.cpp
   src/MenuOptions/AdminMenu.h
   src/MenuOptions/AdminMenu.cpp
+  src/MenuOptions/ChangeAdminPIN.h
+  src/MenuOptions/ChangeAdminPIN.cpp
   src/MenuOptions/InsertCoin.h
   src/MenuOptions/InsertCoin.cpp
   src/MenuOptions/ReadMeter.h

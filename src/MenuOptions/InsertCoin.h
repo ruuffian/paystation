@@ -11,7 +11,7 @@ private:
 public:
   InsertCoin(Paystation *ps) : MenuOption("Insert Coin"), ps_(ps) {}
   void execute() override;
-  ~InsertCoin();
+  ~InsertCoin() = default;
 };
 } // namespace MenuOptions
 
