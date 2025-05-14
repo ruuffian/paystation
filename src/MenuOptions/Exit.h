@@ -1,10 +1,14 @@
 #pragma once
-#include "Menu/MenuOption.h"
+#include "Menu.h"
+#include "MenuOption.h"
 
 namespace GenericMenuOption {
 class Exit : public MenuOption {
+private:
+  Menu *menu_;
+
 public:
-  Exit() : MenuOption("Exit") {}
+  Exit(Menu *m) : MenuOption("Exit"), menu_(m) {}
   void execute() override;
   ~Exit();
 };

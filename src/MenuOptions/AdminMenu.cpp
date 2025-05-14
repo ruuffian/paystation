@@ -1,4 +1,5 @@
 #include "AdminMenu.h"
+#include "Exit.h"
 #include <iostream>
 
 PaystationMenu::AdminMenu::AdminMenu(Paystation *ps)
@@ -10,7 +11,7 @@ PaystationMenu::AdminMenu::AdminMenu(Paystation *ps)
   /* Reboot */
   menu_->addMenuOption(NULL);
   /* Exit */
-  menu_->addMenuOption(NULL);
+  menu_->addMenuOption(new GenericMenuOption::Exit(menu_));
 }
 
 void PaystationMenu::AdminMenu::execute() {

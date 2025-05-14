@@ -27,12 +27,12 @@ int main() {
   main_menu->addMenuOption(new PaystationMenu::ReadMeter(ps));
   main_menu->addMenuOption(new PaystationMenu::BuyParking(ps));
   main_menu->addMenuOption(new PaystationMenu::InsertCoin(ps));
-  main_menu->addMenuOption(new GenericMenuOption::Exit());
+  main_menu->addMenuOption(new GenericMenuOption::Exit(main_menu));
   main_menu->addMenuOption(new PaystationMenu::AdminMenu(ps));
   clrscr();
   /* Main loop */
-  std::cout << "Welcome to Paystation!" << '\n' << '\n';
   main_menu->runMenu();
+  std::cout << "Have a nice day!" << '\n';
   delete main_menu;
   return 0;
 }

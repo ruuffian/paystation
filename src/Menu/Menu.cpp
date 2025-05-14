@@ -21,6 +21,8 @@ MenuOption *Menu::processInput(const int &id) {
   return NULL;
 }
 
+void Menu::exit() { should_exit_ = 1; }
+
 void Menu::runMenu() {
   while (!should_exit_) {
     print();
@@ -31,11 +33,6 @@ void Menu::runMenu() {
       if (selected_option) {
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         selected_option->execute();
-        /* Ew. */
-        if (selected_option->getName() == "Exit") {
-          should_exit_ = 1;
-          continue;
-        }
       } else {
         std::cout << "Invalid menu option." << '\n';
         std::cin.clear();

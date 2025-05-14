@@ -16,6 +16,7 @@ public:
    */
   void addMenuOption(MenuOption *c);
   MenuOption *processInput(const int &in);
+  void exit();
   void print();
   ~Menu();
 };

@@ -1,8 +1,5 @@
-#include <iostream>
 #include "Exit.h"
 
-void GenericMenuOption::Exit::execute() {
-  std::cout << "Good-bye..." << '\n';
-}
+void GenericMenuOption::Exit::execute() { menu_->exit(); }
 
 GenericMenuOption::Exit::~Exit() {}

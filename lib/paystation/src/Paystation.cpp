@@ -40,6 +40,4 @@ PayStrategy *Paystation::setPayStrategy(PayStrategy *ps) {
   return old;
 }
 
-bool Paystation::checkAdminPIN(const std::string &pin) {
-  return pin == pin_;
-}
+bool Paystation::checkAdminPIN(const std::string &pin) { return pin == pin_; }
