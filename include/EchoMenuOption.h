@@ -4,7 +4,7 @@
 
 class EchoMenuOption : public MenuOption {
 public:
-  EchoMenuOption(const int id) : MenuOption(id, "Echo") {}
+  EchoMenuOption() : MenuOption("Echo") {}
   void execute() override;
   ~EchoMenuOption();
 };

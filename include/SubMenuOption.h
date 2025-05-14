@@ -7,7 +7,7 @@ private:
   Menu *sub_menu_;
 
 public:
-  SubMenuOption(const int id);
+  SubMenuOption();
   void execute();
   ~SubMenuOption();
 };

@@ -3,7 +3,7 @@
 
 class ExitMenuOption : public MenuOption {
 public:
-  ExitMenuOption(const int id) : MenuOption(id, "Exit") {}
+  ExitMenuOption() : MenuOption("Exit") {}
   void execute() override;
   ~ExitMenuOption();
 };

@@ -13,10 +13,8 @@ public:
   void runMenu();
   /**
    * Adds an option to the options_ map.
-   * If a MenuOption exists with the same id, overwrite it and return it.
-   * Otherwise, insert it and return the new MenuOption
    */
-  MenuOption *addMenuOption(MenuOption *c);
+  void addMenuOption(MenuOption *c);
   MenuOption *processInput(const int &in);
   void print();
   ~Menu();

@@ -4,10 +4,10 @@
 #include "Menu.h"
 #include <iostream>
 
-SubMenuOption::SubMenuOption(const int id) : MenuOption(id, "SubMenu") {
+SubMenuOption::SubMenuOption() : MenuOption("SubMenu") {
   sub_menu_ = new Menu();
-  sub_menu_->addMenuOption(new EchoMenuOption(1));
-  sub_menu_->addMenuOption(new ExitMenuOption(2));
+  sub_menu_->addMenuOption(new EchoMenuOption());
+  sub_menu_->addMenuOption(new ExitMenuOption());
 }
 
 void SubMenuOption::execute() {

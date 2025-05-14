@@ -20,9 +20,9 @@ int main() {
    * a client. Explicitly giving an id requires changes to multiple lines just
    * to add 1 option.
    */
-  main_menu->addMenuOption(new EchoMenuOption(1));
-  main_menu->addMenuOption(new SubMenuOption(2));
-  main_menu->addMenuOption(new ExitMenuOption(3));
+  main_menu->addMenuOption(new EchoMenuOption());
+  main_menu->addMenuOption(new SubMenuOption());
+  main_menu->addMenuOption(new ExitMenuOption());
   /* Paystation Initializations
    * We initialize here to pass the Paystation class around by reference,
    * avoiding copies and allowing us to edit the guts via some setter methods.

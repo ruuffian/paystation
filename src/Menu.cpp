@@ -2,13 +2,13 @@
 #include <iostream>
 #include <limits>
 
-MenuOption *Menu::addMenuOption(MenuOption *mo) {
-  auto lookup = options_.find(mo->getId());
-  options_[mo->getId()] = mo;
-  if (lookup != options_.end()) {
-    return lookup->second;
+void Menu::addMenuOption(MenuOption *mo) {
+  if (options_.rbegin() == options_.rend()) {
+    options_[1] = mo;
+  } else {
+    auto max = options_.rbegin()->first;
+    options_[max + 1] = mo;
   }
-  return mo;
 }
 
 MenuOption *Menu::processInput(const int &id) {
@@ -25,28 +25,27 @@ void Menu::runMenu() {
     int user_in;
     if (std::cin >> user_in) {
       MenuOption *selected_option = processInput(user_in);
-      if (selected_option == NULL) {
-        std::cout << "Invalid input, please try again." << '\n';
-        continue;
+      if (selected_option) {
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        selected_option->execute();
+        /* Ew. */
+        if (selected_option->getName() == "Exit") {
+          should_exit_ = 1;
+          continue;
+        }
+      } else {
+        std::cout << "Invalid menu option." << '\n';
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
       }
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-      selected_option->execute();
-      /* Ew. */
-      if (selected_option->getName() == "Exit")
-        should_exit_ = 1;
-    } else {
-      std::cout << "Please enter a valid menu option." << '\n';
-      std::cin.clear();
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
   }
 }
 
 void Menu::print() {
-  using namespace std;
-  cout << "Please select an option:" << '\n';
+  std::cout << "Please select an option:" << '\n';
   for (const auto &[id, option] : options_) {
-    cout << '\t' << id << " : " << option->getName() << '\n';
+    std::cout << '\t' << id << " : " << option->getName() << '\n';
   }
 }
 
