@@ -18,8 +18,14 @@ void clrscr();
 int main() {
   /* UI Initializations */
   Menu *main_menu = new Menu();
+  /* I should stop relying on explicit command IDs and couple it to order of
+   * adding. That can be clearly documented and should be an easy constraint for
+   * a client. Explicitly giving an id requires changes to multiple lines just
+   * to add 1 option.
+   */
   main_menu->addMenuOption(new EchoMenuOption(1));
-  main_menu->addMenuOption(new ExitMenuOption(2));
+  main_menu->addMenuOption(new SubmenuOption(2));
+  main_menu->addMenuOption(new ExitMenuOption(3));
   UiState state = {0};
   /* Paystation Initializations
    * We initialize here to pass the Paystation class around by reference,
