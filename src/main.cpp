@@ -1,7 +1,6 @@
 #include <cctype>
 #include <iostream>
 #include <limits>
-#include <string>
 
 #include "Menu.h"
 #include "MenuOptions.h"
@@ -11,7 +10,6 @@
 
 struct UiState {
   short int shouldExit;
-  std::string input;
 };
 
 void clrscr();
@@ -19,33 +17,35 @@ void clrscr();
 
 int main() {
   /* UI Initializations */
-  Menu *menu = new Menu();
-  menu->addMenuOption(new ExitMenuOption(1));
-  menu->addMenuOption(new EchoMenuOption(2));
-  UiState state = {0, ""};
-  /* Paystation Initializations */
-  /*
-  FixedLinearRate *flr = new FixedLinearRate(0, 0.5);
-  Paystation *ps = new Paystation(flr);
-  */
+  Menu *main_menu = new Menu();
+  main_menu->addMenuOption(new EchoMenuOption(1));
+  main_menu->addMenuOption(new ExitMenuOption(2));
+  UiState state = {0};
+  /* Paystation Initializations
+   * We initialize here to pass the Paystation class around by reference,
+   * avoiding copies and allowing us to edit the guts via some setter methods.
+   * This isn't the safest option, but CPP is all about "Trust the programmer",
+   * and it's DEFINITELY better than copying a potentially very large class all
+   * over the place
+   * FixedLinearRate *flr = new FixedLinearRate(0, 0.5);
+   * Paystation *ps = new Paystation(flr);
+   */
   clrscr();
 
   /* Main loop */
-  int choice = -1;
   std::cout << "Welcome to Paystation!" << '\n' << '\n';
   while (!state.shouldExit) {
-    // printPaystationDisplay(ps);
-    menu->print();
-    // What happens when a non-integer is entered?
-    if (std::cin >> choice) {
-      MenuOption *mo = menu->selectMenuOption(choice);
-      if (mo == NULL) {
+    main_menu->print();
+    int user_in;
+    if (std::cin >> user_in) {
+      MenuOption<> *selected_option = main_menu->selectMenuOption(user_in);
+      if (selected_option == NULL) {
         std::cout << "Invalid input, please try again." << '\n';
         continue;
       }
-      mo->execute();
+      selected_option->execute();
       /* Ew. */
-      if (mo->getName() == "Exit")
+      if (selected_option->getName() == "Exit")
         state.shouldExit = 1;
     } else {
       std::cout << "Input failed. Please enter a valid menu option." << '\n';

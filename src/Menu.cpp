@@ -1,7 +1,7 @@
 #include "Menu.h"
 #include <iostream>
 
-MenuOption *Menu::addMenuOption(MenuOption *mo) {
+MenuOption<> *Menu::addMenuOption(MenuOption<> *mo) {
   auto lookup = options_.find(mo->getId());
   options_[mo->getId()] = mo;
   if (lookup != options_.end()) {
@@ -10,7 +10,7 @@ MenuOption *Menu::addMenuOption(MenuOption *mo) {
   return mo;
 }
 
-MenuOption *Menu::selectMenuOption(const int &id) {
+MenuOption<> *Menu::selectMenuOption(const int &id) {
   auto lookup = options_.find(id);
   if (lookup != options_.end()) {
     return lookup->second;
@@ -21,7 +21,7 @@ MenuOption *Menu::selectMenuOption(const int &id) {
 void Menu::print() {
   using namespace std;
   cout << "Please select an option:" << '\n';
-  for (const auto &[id, opt] : options_) {
-    cout << '\t' << id << " : " << opt->getName() << '\n';
+  for (const auto &[id, option] : options_) {
+    cout << '\t' << id << " : " << option->getName() << '\n';
   }
 }
