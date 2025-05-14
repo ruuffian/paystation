@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "Menu/Menu.h"
+#include "MenuOptions/AdminMenu.h"
 #include "MenuOptions/BuyParking.h"
 #include "MenuOptions/Exit.h"
 #include "MenuOptions/InsertCoin.h"
@@ -23,10 +24,11 @@ int main() {
   Paystation *ps = new Paystation(flr, "1234");
   /* UI Initializations */
   Menu *main_menu = new Menu();
-  main_menu->addMenuOption(new MenuOptions::ReadMeter(ps));
-  main_menu->addMenuOption(new MenuOptions::BuyParking(ps));
-  main_menu->addMenuOption(new MenuOptions::InsertCoin(ps));
-  main_menu->addMenuOption(new MenuOptions::Exit());
+  main_menu->addMenuOption(new PaystationMenu::ReadMeter(ps));
+  main_menu->addMenuOption(new PaystationMenu::BuyParking(ps));
+  main_menu->addMenuOption(new PaystationMenu::InsertCoin(ps));
+  main_menu->addMenuOption(new GenericMenuOption::Exit());
+  main_menu->addMenuOption(new PaystationMenu::AdminMenu(ps));
   clrscr();
   /* Main loop */
   std::cout << "Welcome to Paystation!" << '\n' << '\n';

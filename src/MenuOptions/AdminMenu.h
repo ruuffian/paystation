@@ -1,15 +1,17 @@
 #pragma once
+#include "Menu/Menu.h"
 #include "Menu/MenuOption.h"
 #include "Paystation.h"
 
 namespace PaystationMenu {
-class BuyParking : public MenuOption {
+class AdminMenu : public MenuOption {
 private:
+  Menu *menu_;
   Paystation *ps_;
 
 public:
-  BuyParking(Paystation *ps);
+  AdminMenu(Paystation *ps);
   void execute() override;
-  ~BuyParking();
+  ~AdminMenu();
 };
-} // namespace MenuOptions
+} // namespace PaystationMenu

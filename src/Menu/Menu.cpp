@@ -3,11 +3,13 @@
 #include <limits>
 
 void Menu::addMenuOption(MenuOption *mo) {
-  if (options_.rbegin() == options_.rend()) {
-    options_[1] = mo;
-  } else {
-    auto max = options_.rbegin()->first;
-    options_[max + 1] = mo;
+  if (mo) {
+    if (options_.rbegin() == options_.rend()) {
+      options_[1] = mo;
+    } else {
+      auto max = options_.rbegin()->first;
+      options_[max + 1] = mo;
+    }
   }
 }
 

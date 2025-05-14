@@ -1,9 +1,12 @@
 #include "BuyParking.h"
 #include <iostream>
 
-void MenuOptions::BuyParking::execute() {
+PaystationMenu::BuyParking::BuyParking(Paystation *ps)
+    : MenuOption("Buy Parking"), ps_(ps) {}
+
+void PaystationMenu::BuyParking::execute() {
   using namespace std;
   string receipt = ps_->buy();
   cout << receipt << '\n' << '\n';
 }
-MenuOptions::BuyParking::~BuyParking() {}
+PaystationMenu::BuyParking::~BuyParking() {}

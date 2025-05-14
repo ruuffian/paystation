@@ -29,6 +29,8 @@ public:
    * undefined behavior.
    */
   struct PaystationState *getState();
+  /** This will have to use exceptions once it uses the Receipt interface in
+   * case of I/O failures (printer out of paper etc) */
   std::string buy();
   //  cancel();
   //  int empty();
@@ -36,4 +38,5 @@ public:
    * Sets a new paystrategy and returns the old one.
    */
   PayStrategy *setPayStrategy(PayStrategy *);
+  bool checkAdminPIN(const std::string &pin);
 };

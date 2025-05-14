@@ -2,7 +2,7 @@
 #include <iostream>
 #include <limits>
 
-void MenuOptions::InsertCoin::execute() {
+void PaystationMenu::InsertCoin::execute() {
   using namespace std;
   cout << "Insert Coin: ";
   Cents coin;
@@ -17,4 +17,4 @@ void MenuOptions::InsertCoin::execute() {
   cin.clear();
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
-MenuOptions::InsertCoin::~InsertCoin() {}
+PaystationMenu::InsertCoin::~InsertCoin() {}

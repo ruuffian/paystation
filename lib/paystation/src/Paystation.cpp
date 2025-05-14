@@ -39,3 +39,7 @@ PayStrategy *Paystation::setPayStrategy(PayStrategy *ps) {
   pay_strategy_ = ps;
   return old;
 }
+
+bool Paystation::checkAdminPIN(const std::string &pin) {
+  return pin == pin_;
+}

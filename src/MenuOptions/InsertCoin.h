@@ -3,7 +3,7 @@
 #include "Paystation.h"
 #include <string>
 
-namespace MenuOptions {
+namespace PaystationMenu {
 class InsertCoin : public MenuOption {
 private:
   Paystation *ps_;
