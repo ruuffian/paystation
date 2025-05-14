@@ -1,4 +1,4 @@
-#include "fixed_linear_rate.h"
+#include "Paystrategies/FixedLinearRate.h"
 
 FixedLinearRate::FixedLinearRate(unsigned int b, float r) {
   base = b;

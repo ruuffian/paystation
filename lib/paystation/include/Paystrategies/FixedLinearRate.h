@@ -1,5 +1,5 @@
 #pragma once
-#include "paystrategy.h"
+#include "Paystrategy.h"
 
 /**
  * FixedLinearRate(0, .2) would yield 2 minutes of time per 5 cents spent.

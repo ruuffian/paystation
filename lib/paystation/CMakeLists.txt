@@ -10,19 +10,20 @@ enable_cxx_flag("-pedantic")
 
 set( 
   SOURCES 
-  src/paystation.cpp 
-  src/fixed_linear_rate.cpp
+  src/Paystation.cpp 
+  src/Paystrategies/FixedLinearRate.cpp
 )
 
 set( 
   INCLUDES 
-  include/paystation.h
-  include/paystrategy.h
-  include/fixed_linear_rate.h
+  include/Paystation.h
+  include/Paystrategy.h
+  include/Paystrategies/FixedLinearRate.h
 )
 
 add_library( 
   paystation
+  SHARED
   ${SOURCES}
   ${INCLUDES}
 )

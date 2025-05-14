@@ -1,4 +1,4 @@
-#include "paystation.h"
+#include "Paystation.h"
 
 Paystation::Paystation(PayStrategy *r) {
   ps = new PaystationState{0, 0};

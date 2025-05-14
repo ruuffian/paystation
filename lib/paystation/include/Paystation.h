@@ -1,6 +1,6 @@
 #pragma once
 
-#include "paystrategy.h"
+#include "Paystrategy.h"
 #include <optional>
 
 typedef unsigned int Minutes;
