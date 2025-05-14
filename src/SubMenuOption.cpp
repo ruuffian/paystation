@@ -18,7 +18,8 @@ void SubMenuOption::execute() {
     sub_menu_->print();
     int user_in;
     if (std::cin >> user_in) {
-      MenuOption *selected_option = sub_menu_->selectMenuOption(user_in);
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      MenuOption *selected_option = sub_menu_->processInput(user_in);
       if (selected_option == NULL) {
         std::cout << "Please enter a valid menu option." << '\n';
         continue;

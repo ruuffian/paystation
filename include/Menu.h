@@ -15,7 +15,7 @@ public:
    * Otherwise, insert it and return the new MenuOption
    */
   MenuOption *addMenuOption(MenuOption *c);
-  MenuOption *selectMenuOption(const int &in);
+  MenuOption *processInput(const int &in);
   void print();
   ~Menu();
 };

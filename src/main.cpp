@@ -2,9 +2,9 @@
 #include <iostream>
 #include <limits>
 
-#include "Menu.h"
-#include "ExitMenuOption.h"
 #include "EchoMenuOption.h"
+#include "ExitMenuOption.h"
+#include "Menu.h"
 #include "SubMenuOption.h"
 // #include "paystation.h"
 
@@ -41,11 +41,12 @@ int main() {
     main_menu->print();
     int user_in;
     if (std::cin >> user_in) {
-      MenuOption *selected_option = main_menu->selectMenuOption(user_in);
+      MenuOption *selected_option = main_menu->processInput(user_in);
       if (selected_option == NULL) {
         std::cout << "Invalid input, please try again." << '\n';
         continue;
       }
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
       selected_option->execute();
       /* Ew. */
       if (selected_option->getName() == "Exit")

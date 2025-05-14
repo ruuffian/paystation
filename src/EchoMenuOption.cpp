@@ -1,7 +1,13 @@
-#include <iostream>
 #include "EchoMenuOption.h"
+#include <iostream>
 
 void EchoMenuOption::execute() {
-  std::cout << "'" << name_ << "' selected." << '\n';
+  using namespace std;
+  cout << "Message: ";
+  string in;
+  cin.clear();
+  cin.sync();
+  getline(std::cin, in);
+  cout << in << '\n';
 }
 EchoMenuOption::~EchoMenuOption() {}

@@ -10,7 +10,7 @@ MenuOption *Menu::addMenuOption(MenuOption *mo) {
   return mo;
 }
 
-MenuOption *Menu::selectMenuOption(const int &id) {
+MenuOption *Menu::processInput(const int &id) {
   auto lookup = options_.find(id);
   if (lookup != options_.end()) {
     return lookup->second;
