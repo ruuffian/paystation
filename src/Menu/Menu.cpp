@@ -29,6 +29,7 @@ void Menu::runMenu() {
   should_exit_ = 0;
   while (!should_exit_) {
     tui::clrscr();
+    printHeader();
     printOptions();
     std::cout << '\n';
     int user_in;
@@ -53,6 +54,17 @@ void Menu::printHeader() {
   }
 }
 
+Header *Menu::setHeader(Header *h) {
+  if (header_) {
+    header_ = h;
+    return NULL;
+  } else {
+    Header *old = header_;
+    header_ = h;
+    return old;
+  }
+}
+
 void Menu::printOptions() {
   std::cout << "Please select an option:" << '\n';
   for (const auto &[id, option] : options_) {
@@ -61,6 +73,7 @@ void Menu::printOptions() {
 }
 
 Menu::~Menu() {
+  delete header_;
   for (auto &[key, option] : options_) {
     delete option;
   }

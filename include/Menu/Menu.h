@@ -22,8 +22,8 @@ public:
   void exit();
   /* Print header block associated with Menu, if any. */
   void printHeader();
-  /* Set header_ */
-  void setHeader(Header *header_);
+  /* Set header_. If header_ is not null, returns the old value.*/
+  Header *setHeader(Header *header_);
   /* Print registered menu options in order of insertion. */
   void printOptions();
   /* Deletes header_ and members of options_ */

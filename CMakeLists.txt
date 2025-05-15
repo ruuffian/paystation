@@ -12,18 +12,20 @@ set(
   src/main.cpp 
   src/tui.cpp
   src/Menu/Menu.cpp
-  src/MenuOptions/AdminMenu.h
-  src/MenuOptions/AdminMenu.cpp
-  src/MenuOptions/ChangeAdminPin.h
-  src/MenuOptions/ChangeAdminPin.cpp
-  src/MenuOptions/InsertCoin.h
-  src/MenuOptions/InsertCoin.cpp
-  src/MenuOptions/ReadMeter.h
-  src/MenuOptions/ReadMeter.cpp
-  src/MenuOptions/BuyParking.h
-  src/MenuOptions/BuyParking.cpp
-  src/MenuOptions/Exit.h
-  src/MenuOptions/Exit.cpp
+  src/Menu/Headers/PaystationBalance.h
+  src/Menu/Headers/PaystationBalance.cpp
+  src/Menu/Options/AdminMenu.h
+  src/Menu/Options/AdminMenu.cpp
+  src/Menu/Options/ChangeAdminPin.h
+  src/Menu/Options/ChangeAdminPin.cpp
+  src/Menu/Options/InsertCoin.h
+  src/Menu/Options/InsertCoin.cpp
+  src/Menu/Options/ReadMeter.h
+  src/Menu/Options/ReadMeter.cpp
+  src/Menu/Options/BuyParking.h
+  src/Menu/Options/BuyParking.cpp
+  src/Menu/Options/Exit.h
+  src/Menu/Options/Exit.cpp
 )
 
 set(

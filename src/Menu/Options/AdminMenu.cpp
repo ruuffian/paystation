@@ -15,7 +15,7 @@ AdminMenu::AdminMenu(Paystation *ps)
   menu_->addOption(new AdministratorMenu::ChangeAdminPIN(ps_));
   /* Reboot */
   menu_->addOption(NULL);
-  /* Exit */
+  /* Exit (maybe exit the entire machine including the parent menu?) */
   menu_->addOption(new GenericMenu::Exit(menu_));
 }
 
