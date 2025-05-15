@@ -1,22 +1,22 @@
 #include "AdminMenu.h"
-#include "ChangeAdminPIN.h"
+#include "ChangeAdminPin.h"
 #include "Exit.h"
 #include <iostream>
 #include <tui.h>
 
 namespace PaystationMenu {
 AdminMenu::AdminMenu(Paystation *ps)
-    : MenuOption("Admin Menu"), menu_(new Menu()), ps_(ps) {
+    : Menu::Option("Admin Menu"), menu_(new Menu::Menu()), ps_(ps) {
   /* Empty */
-  menu_->addMenuOption(NULL);
+  menu_->addOption(NULL);
   /* Change Rate Strategy (another sub menu) */
-  menu_->addMenuOption(NULL);
+  menu_->addOption(NULL);
   /* Change admin PIN */
-  menu_->addMenuOption(new AdministratorMenu::ChangeAdminPIN(ps_));
+  menu_->addOption(new AdministratorMenu::ChangeAdminPIN(ps_));
   /* Reboot */
-  menu_->addMenuOption(NULL);
+  menu_->addOption(NULL);
   /* Exit */
-  menu_->addMenuOption(new GenericMenuOption::Exit(menu_));
+  menu_->addOption(new GenericMenu::Exit(menu_));
 }
 
 void AdminMenu::execute() {

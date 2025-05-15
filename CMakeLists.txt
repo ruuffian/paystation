@@ -14,8 +14,8 @@ set(
   src/Menu/Menu.cpp
   src/MenuOptions/AdminMenu.h
   src/MenuOptions/AdminMenu.cpp
-  src/MenuOptions/ChangeAdminPIN.h
-  src/MenuOptions/ChangeAdminPIN.cpp
+  src/MenuOptions/ChangeAdminPin.h
+  src/MenuOptions/ChangeAdminPin.cpp
   src/MenuOptions/InsertCoin.h
   src/MenuOptions/InsertCoin.cpp
   src/MenuOptions/ReadMeter.h
@@ -30,7 +30,8 @@ set(
   INCLUDES
   include/tui.h
   include/Menu/Menu.h
-  include/Menu/MenuOption.h
+  include/Menu/Header.h
+  include/Menu/Option.h
 )
 
 add_executable( main.exe ${SOURCES} ${INCLUDES} )

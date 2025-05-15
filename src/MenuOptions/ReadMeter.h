@@ -1,9 +1,9 @@
 #pragma once
-#include "Menu/MenuOption.h"
+#include "Menu/Option.h"
 #include "Paystation.h"
 
 namespace PaystationMenu {
-class ReadMeter : public MenuOption {
+class ReadMeter : public Menu::Option {
 private:
   Paystation *ps_;
 
@@ -12,4 +12,4 @@ public:
   void execute() override;
   ~ReadMeter() = default;
 };
-} // namespace MenuOptions
+} // namespace PaystationMenu

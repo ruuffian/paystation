@@ -21,16 +21,15 @@ int main() {
   FixedLinearRate *flr = new FixedLinearRate(0, 0.5);
   Paystation *ps = new Paystation(flr, "1234");
   /* UI Initializations */
-  Menu *main_menu = new Menu();
-  main_menu->addMenuOption(new PaystationMenu::ReadMeter(ps));
-  main_menu->addMenuOption(new PaystationMenu::BuyParking(ps));
-  main_menu->addMenuOption(new PaystationMenu::InsertCoin(ps));
-  main_menu->addMenuOption(new GenericMenuOption::Exit(main_menu));
-  main_menu->addMenuOption(new PaystationMenu::AdminMenu(ps));
+  Menu::Menu *main_menu = new Menu::Menu();
+  main_menu->addOption(new PaystationMenu::ReadMeter(ps));
+  main_menu->addOption(new PaystationMenu::BuyParking(ps));
+  main_menu->addOption(new PaystationMenu::InsertCoin(ps));
+  main_menu->addOption(new GenericMenu::Exit(main_menu));
+  main_menu->addOption(new PaystationMenu::AdminMenu(ps));
   /* Main loop */
   main_menu->runMenu();
   std::cout << "Have a nice day!" << '\n';
   delete main_menu;
   return 0;
 }
-

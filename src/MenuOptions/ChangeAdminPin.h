@@ -1,9 +1,9 @@
 #pragma once
-#include "MenuOption.h"
+#include "Menu/Option.h"
 #include "Paystation.h"
 
 namespace AdministratorMenu {
-class ChangeAdminPIN : public MenuOption {
+class ChangeAdminPIN : public Menu::Option {
 private:
   Paystation *ps_;
 

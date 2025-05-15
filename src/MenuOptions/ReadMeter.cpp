@@ -2,7 +2,7 @@
 #include <iostream>
 
 namespace PaystationMenu {
-ReadMeter::ReadMeter(Paystation *ps) : MenuOption("Read Meter"), ps_(ps) {}
+ReadMeter::ReadMeter(Paystation *ps) : Menu::Option("Read Meter"), ps_(ps) {}
 
 void ReadMeter::execute() {
   using namespace std;

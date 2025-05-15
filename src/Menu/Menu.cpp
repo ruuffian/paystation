@@ -1,10 +1,10 @@
 #include "Menu.h"
+#include "tui.h"
 #include <iostream>
 #include <limits>
-#include "tui.h"
 
-
-void Menu::addMenuOption(MenuOption *mo) {
+namespace Menu {
+void Menu::addOption(Option *mo) {
   if (mo) {
     if (options_.rbegin() == options_.rend()) {
       options_[1] = mo;
@@ -15,7 +15,7 @@ void Menu::addMenuOption(MenuOption *mo) {
   }
 }
 
-MenuOption *Menu::processInput(const int &id) {
+Option *Menu::processInput(const int &id) {
   auto lookup = options_.find(id);
   if (lookup != options_.end()) {
     return lookup->second;
@@ -29,11 +29,11 @@ void Menu::runMenu() {
   should_exit_ = 0;
   while (!should_exit_) {
     tui::clrscr();
-    print();
+    printOptions();
     std::cout << '\n';
     int user_in;
     if (std::cin >> user_in) {
-      MenuOption *selected_option = processInput(user_in);
+      Option *selected_option = processInput(user_in);
       if (selected_option) {
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         selected_option->execute();
@@ -47,7 +47,13 @@ void Menu::runMenu() {
   }
 }
 
-void Menu::print() {
+void Menu::printHeader() {
+  if (header_) {
+    header_->print();
+  }
+}
+
+void Menu::printOptions() {
   std::cout << "Please select an option:" << '\n';
   for (const auto &[id, option] : options_) {
     std::cout << '\t' << id << " : " << option->getName() << '\n';
@@ -59,3 +65,4 @@ Menu::~Menu() {
     delete option;
   }
 }
+} // namespace Menu

@@ -1,12 +1,12 @@
 #pragma once
-#include "Menu/Menu.h"
-#include "Menu/MenuOption.h"
+#include "Menu.h"
+#include "Menu/Option.h"
 #include "Paystation.h"
 
 namespace PaystationMenu {
-class AdminMenu : public MenuOption {
+class AdminMenu : public Menu::Option {
 private:
-  Menu *menu_;
+  Menu::Menu *menu_;
   Paystation *ps_;
 
 public:

@@ -1,7 +1,7 @@
 #include "Exit.h"
 
-namespace GenericMenuOption {
-Exit::Exit(Menu *m) : MenuOption("Exit"), menu_(m) {}
+namespace GenericMenu {
+Exit::Exit(Menu::Menu *m) : Menu::Option("Exit"), menu_(m) {}
 
-void GenericMenuOption::Exit::execute() { menu_->exit(); }
-} // namespace GenericMenuOption
+void Exit::execute() { menu_->exit(); }
+} // namespace GenericMenu

@@ -1,9 +1,9 @@
 #pragma once
-#include "Menu/MenuOption.h"
+#include "Menu/Option.h"
 #include "Paystation.h"
 
 namespace PaystationMenu {
-class BuyParking : public MenuOption {
+class BuyParking : public Menu::Option {
 private:
   Paystation *ps_;
 
@@ -12,4 +12,4 @@ public:
   void execute() override;
   ~BuyParking();
 };
-} // namespace MenuOptions
+} // namespace PaystationMenu

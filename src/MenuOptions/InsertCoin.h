@@ -1,9 +1,9 @@
 #pragma once
-#include "Menu/MenuOption.h"
+#include "Menu/Option.h"
 #include "Paystation.h"
 
 namespace PaystationMenu {
-class InsertCoin : public MenuOption {
+class InsertCoin : public Menu::Option {
 private:
   Paystation *ps_;
 

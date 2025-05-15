@@ -3,7 +3,7 @@
 #include <limits>
 
 namespace PaystationMenu {
-InsertCoin::InsertCoin(Paystation *ps) : MenuOption("Insert Coin"), ps_(ps) {}
+InsertCoin::InsertCoin(Paystation *ps) : Menu::Option("Insert Coin"), ps_(ps) {}
 
 void InsertCoin::execute() {
   using namespace std;
