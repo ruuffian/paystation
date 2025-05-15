@@ -12,6 +12,7 @@ C++ (and, apparently, CMake).
 
 * doxygen
 * Cross-Platform compilation
-* GNU Readline tui 
+* GNU Readline tui (lowkey might not need this, backspaces seem to work. up/down
+  arrows would be cool tho.)
 * ncurses tui
 * openGL UI

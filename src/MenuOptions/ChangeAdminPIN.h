@@ -8,8 +8,8 @@ private:
   Paystation *ps_;
 
 public:
-  ChangeAdminPIN(Paystation *ps) : MenuOption("Change PIN"), ps_(ps) {}
+  ChangeAdminPIN(Paystation *ps);
   void execute() override;
   ~ChangeAdminPIN() = default;
 };
-} // namespace AdminMenu
+} // namespace AdministratorMenu

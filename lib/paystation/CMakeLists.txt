@@ -3,11 +3,6 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-enable_cxx_flag("-Wall")
-enable_cxx_flag("-Wextra")
-enable_cxx_flag("-Werror")
-enable_cxx_flag("-pedantic")
-
 set( 
   SOURCES 
   src/Paystation.cpp 
@@ -28,3 +23,9 @@ add_library(
   ${INCLUDES}
 )
 target_include_directories( paystation PUBLIC include )
+
+if(UNIX)
+  target_compile_options(paystation PRIVATE -Wall -Wextra -Wpedantic -Werror)
+else()
+  target_compile_options(paystation PRIVATE /W4 /WX)
+endif()

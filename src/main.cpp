@@ -10,8 +10,6 @@
 #include "Paystation.h"
 #include "Paystrategies/FixedLinearRate.h"
 
-void clrscr();
-
 int main() {
   /* Paystation Initializations
    * We initialize here to pass the Paystation class around by reference,
@@ -29,7 +27,6 @@ int main() {
   main_menu->addMenuOption(new PaystationMenu::InsertCoin(ps));
   main_menu->addMenuOption(new GenericMenuOption::Exit(main_menu));
   main_menu->addMenuOption(new PaystationMenu::AdminMenu(ps));
-  clrscr();
   /* Main loop */
   main_menu->runMenu();
   std::cout << "Have a nice day!" << '\n';
@@ -37,5 +34,3 @@ int main() {
   return 0;
 }
 
-/* This is a one-line answer to an Operating Systems lab question :-) */
-void clrscr() { std::cout << "\033[2J\033[1;1H"; }

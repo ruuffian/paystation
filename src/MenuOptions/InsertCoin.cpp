@@ -2,7 +2,10 @@
 #include <iostream>
 #include <limits>
 
-void PaystationMenu::InsertCoin::execute() {
+namespace PaystationMenu {
+InsertCoin::InsertCoin(Paystation *ps) : MenuOption("Insert Coin"), ps_(ps) {}
+
+void InsertCoin::execute() {
   using namespace std;
   cout << "Insert Coin: ";
   Cents coin;
@@ -17,3 +20,4 @@ void PaystationMenu::InsertCoin::execute() {
   }
   cout << '\n' << '\n';
 }
+} // namespace PaystationMenu

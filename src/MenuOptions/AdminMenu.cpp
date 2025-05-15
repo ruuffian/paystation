@@ -2,8 +2,10 @@
 #include "ChangeAdminPIN.h"
 #include "Exit.h"
 #include <iostream>
+#include <tui.h>
 
-PaystationMenu::AdminMenu::AdminMenu(Paystation *ps)
+namespace PaystationMenu {
+AdminMenu::AdminMenu(Paystation *ps)
     : MenuOption("Admin Menu"), menu_(new Menu()), ps_(ps) {
   /* Empty */
   menu_->addMenuOption(NULL);
@@ -17,12 +19,14 @@ PaystationMenu::AdminMenu::AdminMenu(Paystation *ps)
   menu_->addMenuOption(new GenericMenuOption::Exit(menu_));
 }
 
-void PaystationMenu::AdminMenu::execute() {
+void AdminMenu::execute() {
   using namespace std;
   /* Check Admin PIN */
   string pin;
   cout << "PIN: ";
+  tui::disable_echo();
   getline(std::cin, pin);
+  tui::enable_echo();
   if (ps_->checkAdminPIN(pin)) {
     menu_->runMenu();
   } else {
@@ -31,4 +35,5 @@ void PaystationMenu::AdminMenu::execute() {
 }
 
 /* Calling delete on a null pointer is ok :> */
-PaystationMenu::AdminMenu::~AdminMenu() { delete menu_; }
+AdminMenu::~AdminMenu() { delete menu_; }
+} // namespace PaystationMenu

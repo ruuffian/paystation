@@ -1,37 +1,34 @@
 #include "ChangeAdminPIN.h"
+#include "Paystation.h"
+#include "tui.h"
 #include <iostream>
 #include <termios.h>
 #include <unistd.h>
 
-void disable_term_echo(termios &oldt) {
-  tcgetattr(STDIN_FILENO, &oldt);
-  termios newt = oldt;
-  newt.c_lflag &= ~ECHO;
-  tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-}
+namespace AdministratorMenu {
 
-void enable_term_echo(termios &oldt) {
-  tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-}
+ChangeAdminPIN::ChangeAdminPIN(Paystation *ps)
+    : MenuOption("Change PIN"), ps_(ps) {}
 
-void AdministratorMenu::ChangeAdminPIN::execute() {
+void ChangeAdminPIN::execute() {
   using namespace std;
-  /* Very hacky and not-reusable way of switching off terminal echo for password
-   * input.Also does not port to windows / macos.disable_term_echo(oldt);
-   */
-  termios oldt;
-  disable_term_echo(oldt);
   /* Check Admin PIN */
   string current_pin;
   cout << "Current PIN: ";
+  tui::disable_echo();
   getline(std::cin, current_pin);
+  tui::enable_echo();
   if (ps_->checkAdminPIN(current_pin)) {
     string new_pin1;
     cout << '\n' << "New PIN: ";
+    tui::disable_echo();
     getline(std::cin, new_pin1);
+    tui::enable_echo();
     string new_pin2;
     cout << '\n' << "Verify New PIN: ";
+    tui::disable_echo();
     getline(std::cin, new_pin2);
+    tui::enable_echo();
     if (new_pin1 != new_pin2) {
       cout << '\n' << "PINs do not match." << '\n';
     } else {
@@ -48,5 +45,5 @@ void AdministratorMenu::ChangeAdminPIN::execute() {
   } else {
     cout << '\n' << "Incorrect PIN." << '\n';
   }
-  enable_term_echo(oldt);
 }
+} // namespace AdministratorMenu

@@ -8,7 +8,7 @@ private:
   Menu *menu_;
 
 public:
-  Exit(Menu *m) : MenuOption("Exit"), menu_(m) {}
+  Exit(Menu *m);
   void execute() override;
   ~Exit() = default;
 };

@@ -1,6 +1,8 @@
 #include "Menu.h"
 #include <iostream>
 #include <limits>
+#include "tui.h"
+
 
 void Menu::addMenuOption(MenuOption *mo) {
   if (mo) {
@@ -26,6 +28,7 @@ void Menu::exit() { should_exit_ = 1; }
 void Menu::runMenu() {
   should_exit_ = 0;
   while (!should_exit_) {
+    tui::clrscr();
     print();
     std::cout << '\n';
     int user_in;
