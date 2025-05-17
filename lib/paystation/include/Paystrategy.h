@@ -1,7 +1,6 @@
 #pragma once
-typedef unsigned int Cents;
 class PayStrategy {
 public:
   /** Calculates time purchased by 'cents'. */
-  virtual float calculate(Cents c) = 0;
+  virtual float calculate(int c) = 0;
 };

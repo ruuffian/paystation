@@ -7,7 +7,7 @@ Paystation::Paystation(PayStrategy *ps, std::string ap) {
   pin_ = ap;
 }
 
-Cents Paystation::insertCoin(const unsigned int &coin) {
+int Paystation::insertCoin(const int &coin) {
   switch (coin) {
   case 1:
   case 5:

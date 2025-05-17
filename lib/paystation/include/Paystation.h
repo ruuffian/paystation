@@ -6,11 +6,9 @@
 #define ERR_SAME_PIN (1 << 0)
 #define ERR_UNKNOWN (2 << 0)
 
-typedef unsigned int Minutes;
-
 struct PaystationState {
-  Cents balance;
-  Minutes timePurchased;
+  int balance;
+  int timePurchased;
 };
 
 class Paystation {
@@ -26,7 +24,7 @@ public:
    * adds it to ps_->balance. Additionally, ps_->timePurchased is recalculated.
    * Returns 0 when successfuly and the inserted amount when not.
    */
-  Cents insertCoin(const Cents &);
+  int insertCoin(const int &);
   /**
    * Returns a copy of the Paystation state. Editing this memory is considered
    * undefined behavior.

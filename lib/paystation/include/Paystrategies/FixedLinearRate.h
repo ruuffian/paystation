@@ -13,7 +13,7 @@ public:
   /*
    * rate*cents + base
    */
-  FixedLinearRate(const unsigned int b, const float r);
+  FixedLinearRate(const int b, const float r);
 
-  float calculate(const unsigned int cents) override;
+  float calculate(const int cents) override;
 };
