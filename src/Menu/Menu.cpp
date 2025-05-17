@@ -28,7 +28,7 @@ void Menu::exit() { should_exit_ = 1; }
 void Menu::runMenu() {
   should_exit_ = 0;
   while (!should_exit_) {
-    tui::clrscr();
+    clrscr();
     printHeader();
     printOptions();
     std::cout << '\n';
