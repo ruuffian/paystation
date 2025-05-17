@@ -28,7 +28,7 @@ void AdminMenu::execute() {
   getline(std::cin, pin);
   tui::enable_echo();
   if (ps_->checkAdminPIN(pin)) {
-    menu_->runMenu();
+    menu_->render();
   } else {
     cout << "Incorrect PIN." << '\n';
   }

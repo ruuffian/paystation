@@ -9,7 +9,7 @@ private:
 
 public:
   PaystationBalance(Paystation *ps);
-  void print() override;
+  void render() override;
   ~PaystationBalance();
 };
 } // namespace PaystationMenu

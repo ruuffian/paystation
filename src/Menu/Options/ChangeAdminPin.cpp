@@ -35,9 +35,9 @@ void ChangeAdminPIN::execute() {
         std::cout << '\n' << "Successfully updated PIN." << '\n';
       } else {
         res == ERR_SAME_PIN ? std::cout << '\n'
-                                   << "Can't re-use PIN." << '\n'
+                                        << "Can't re-use PIN." << '\n'
                             : std::cout << '\n'
-                                   << "Failed to update PIN." << '\n';
+                                        << "Failed to update PIN." << '\n';
       }
     }
   } else {

@@ -17,16 +17,16 @@ int main() {
    * and it's DEFINITELY better than copying a potentially very large class all
    * over the place
    */
-  FixedLinearRate *flr = new FixedLinearRate(0, 0.4);
-  Paystation *ps = new Paystation(flr, "1234");
+  auto *flr{new FixedLinearRate(0, 0.4)};
+  auto *ps{new Paystation(flr, "1234")};
   /* UI Initializations */
-  Menu::Menu *main_menu = new Menu::Menu();
+  auto main_menu{new Menu::Menu()};
   main_menu->setHeader(new PaystationMenu::PaystationBalance(ps));
   main_menu->addOption(new PaystationMenu::BuyParking(ps));
   main_menu->addOption(new PaystationMenu::InsertCoin(ps));
   main_menu->addOption(new PaystationMenu::AdminMenu(ps));
   /* Main loop */
-  main_menu->runMenu();
+  main_menu->render();
   std::cout << "Have a nice day!" << '\n';
   delete main_menu;
   return 0;

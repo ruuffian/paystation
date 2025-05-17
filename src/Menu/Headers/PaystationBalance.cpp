@@ -13,7 +13,7 @@ namespace PaystationMenu {
 PaystationBalance::PaystationBalance(Paystation *ps)
     : Menu::Header(), ps_(ps) {}
 
-void PaystationBalance::print() {
+void PaystationBalance::render() {
   PaystationState *ps_state = ps_->getState();
   std::cout << "Time: " << format_minutes(ps_state->timePurchased) << '\n';
   std::cout << "Cost: " << format_money(ps_state->balance) << '\n';
@@ -26,9 +26,9 @@ std::string format_minutes(int min) {
    * 'weights' to calculate several layers of time (minutes -> hours ->
    * days...) but I am WAY too lazy to do that...
    */
-  int days = min / (24*60);
+  int days = min / (24 * 60);
   int hours = (min / 60) % 24;
-  int minutes = min % (24*60);
+  int minutes = min % (24 * 60);
   std::ostringstream total;
   total << days << ":";
   if (hours < 10) {

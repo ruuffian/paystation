@@ -7,7 +7,7 @@ pkgs.mkShell {
   ];
   env = {
     TEST="Hello there...";
-    PROJ_HOME="~/code/dev/nt/cpp/paystation";
+    PROJ_HOME="~/code/dev/paystation";
   };
   shellHook = ''
     alias home="cd $PROJ_HOME"

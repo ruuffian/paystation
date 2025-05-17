@@ -6,26 +6,28 @@
 namespace Menu {
 class Menu {
 private:
-  // We use a std::map because it's keys are sorted in Ascending order-
-  // we rely on this fact to print the options in a deterministic order.
-  std::map<int, Option *> options_;
+  // 1-indexed sorted map: allows us to print options in a deterministic order.
+  std::map<int, Option *> options_{};
   int should_exit_ = 0;
-  Header *header_;
+  Header *header_{};
 
 public:
   /* Begin rendering loop, usually exited via the GenericOption Exit(). */
-  void runMenu();
+  void render();
+  /* Accept input from stdin, returns a registered Option* */
+  Option *readInput();
   /* Adds an option to the options_. */
   void addOption(Option *c);
-  /* Lookup an int and return associated Option, NULL otherwise. */
-  Option *processInput(const int &in);
-  void exit();
-  /* Print header block associated with Menu, if any. */
-  void printHeader();
   /* Set header_. If header_ is not null, returns the old value.*/
   Header *setHeader(Header *header_);
+  /* Print header block associated with Menu, if any. */
+  void renderHeader();
   /* Print registered menu options in order of insertion. */
-  void printOptions();
+  void renderOptions();
+  /* Print footer block, if present */
+  void renderFooter();
+  /* Ends the menu rendering loop */
+  void exit();
   /* Deletes header_ and members of options_ */
   ~Menu();
 };

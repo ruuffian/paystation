@@ -11,7 +11,7 @@ void enable_echo() { toggle_tty_echo(true); }
 
 // TODO: Windows support
 void toggle_tty_echo(bool enable = true) {
-  termios t;
+  termios t{};
   tcgetattr(STDIN_FILENO, &t);
   enable ? t.c_lflag |= ECHO : t.c_lflag &= ~ECHO;
   tcsetattr(STDIN_FILENO, TCSANOW, &t);

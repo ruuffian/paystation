@@ -108,6 +108,7 @@ To build and run the project, perform the following:
 <!-- ROADMAP -->
 ## Roadmap
 
+- [ ] Support embedded Lua paystrategies
 - [ ] Cross-Platform support
 - [ ] Doxygen
 - [ ] GNU Readline support
