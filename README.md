@@ -17,7 +17,6 @@
   </a>
 
 <h3 align="center">paystation</h3>
-
   <p align="center">
     <br />
     <a href="https://github.com/ruuffian/paystation"><strong>Explore the docs »</strong></a>
@@ -68,8 +67,8 @@
 This is tied as the most memorable lab that I did in college (the first is 
 the shell lab in Operating Systems), despite it's relative simplicity. It 
 re-introduced a lot of OOP-concepts that I thought I understood, but did not.
-riginal lab was done in Java, but I have decided to revisit it to teach myself 
-C++ (and, apparently, CMake).
+The original lab was done in Java, but I have decided to revisit it to teach 
+myself C++ (and, apparently, CMake).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -91,22 +90,19 @@ To build and run the project, perform the following:
 
 ### Prerequisites
 
-* cmake
-
-`https://cmake.org/download/`
+* CMake: `https://cmake.org/download/`
 
 ### Installation
 
 1. Clone the repo
    ```sh
    git clone https://github.com/ruuffian/paystation.git
+   cd build/
+   cmake ..
+   make
    ```
-2. `cd build/`
-3. `cmake ..`
-4. `make`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- ROADMAP -->
