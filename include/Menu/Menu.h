@@ -2,18 +2,20 @@
 #include "Header.h"
 #include "Option.h"
 #include <map>
+#include <sstream>
 
 namespace Menu {
 class Menu {
 private:
   // 1-indexed sorted map: allows us to print options in a deterministic order.
   std::map<int, Option *> options_{};
-  int should_exit_ = 0;
+  std::string output_;
   Header *header_{};
+  int should_exit_{0};
 
 public:
   /* Begin rendering loop, usually exited via the GenericOption Exit(). */
-  void render();
+  void render(std::ostringstream &out);
   /* Accept input from stdin, returns a registered Option* */
   Option *readInput();
   /* Adds an option to the options_. */

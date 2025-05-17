@@ -1,6 +1,7 @@
 #pragma once
 #include "Menu/Option.h"
 #include "Paystation.h"
+#include <sstream>
 
 namespace PaystationMenu {
 class BuyParking : public Menu::Option {
@@ -9,7 +10,7 @@ private:
 
 public:
   BuyParking(Paystation *ps);
-  void execute() override;
+  void execute(std::ostringstream &out) override;
   ~BuyParking();
 };
 } // namespace PaystationMenu

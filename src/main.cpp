@@ -26,7 +26,8 @@ int main() {
   main_menu->addOption(new PaystationMenu::InsertCoin(ps));
   main_menu->addOption(new PaystationMenu::AdminMenu(ps));
   /* Main loop */
-  main_menu->render();
+  std::ostringstream out{};
+  main_menu->render(out);
   std::cout << "Have a nice day!" << '\n';
   delete main_menu;
   return 0;

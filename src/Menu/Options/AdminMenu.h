@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include "Menu/Option.h"
 #include "Paystation.h"
+#include <sstream>
 
 namespace PaystationMenu {
 class AdminMenu : public Menu::Option {
@@ -11,7 +12,7 @@ private:
 
 public:
   AdminMenu(Paystation *ps);
-  void execute() override;
+  void execute(std::ostringstream &out) override;
   ~AdminMenu();
 };
 } // namespace PaystationMenu

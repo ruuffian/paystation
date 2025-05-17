@@ -20,8 +20,6 @@ set(
   src/Menu/Options/ChangeAdminPin.cpp
   src/Menu/Options/InsertCoin.h
   src/Menu/Options/InsertCoin.cpp
-  src/Menu/Options/ReadMeter.h
-  src/Menu/Options/ReadMeter.cpp
   src/Menu/Options/BuyParking.h
   src/Menu/Options/BuyParking.cpp
   src/Menu/Options/Exit.h

@@ -5,19 +5,18 @@
 namespace PaystationMenu {
 InsertCoin::InsertCoin(Paystation *ps) : Menu::Option("Insert Coin"), ps_(ps) {}
 
-void InsertCoin::execute() {
+void InsertCoin::execute(std::ostringstream &out) {
   using namespace std;
   cout << "Insert Coin: ";
   Cents coin;
   if (cin >> coin) {
     if (ps_->insertCoin(coin) != 0) {
-      cout << "Coin not recognized." << '\n';
+      out << "Coin not recognized." << '\n';
     }
   } else {
-    cout << "Invalid input." << '\n';
+    out << "Invalid input." << '\n';
     cin.clear();
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
   }
-  cout << '\n' << '\n';
 }
 } // namespace PaystationMenu

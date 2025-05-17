@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <sstream>
 #include <string>
 
 /** Enter the Command pattern. */
@@ -13,7 +14,8 @@ public:
   virtual void render(const int &id) {
     std::cout << '\t' << id << " : " << name_ << '\n';
   };
-  virtual void execute() = 0;
+  /* Takes in a stream to append output to (allows chaining). */
+  virtual void execute(std::ostringstream &out) = 0;
   virtual ~Option() = default;
 };
 } // namespace Menu

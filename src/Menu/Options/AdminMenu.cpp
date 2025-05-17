@@ -2,6 +2,7 @@
 #include "ChangeAdminPin.h"
 #include "Exit.h"
 #include <iostream>
+#include <sstream>
 #include <tui.h>
 
 namespace PaystationMenu {
@@ -19,7 +20,7 @@ AdminMenu::AdminMenu(Paystation *ps)
   menu_->addOption(new GenericMenu::Exit(menu_));
 }
 
-void AdminMenu::execute() {
+void AdminMenu::execute(std::ostringstream &out) {
   using namespace std;
   /* Check Admin PIN */
   string pin;
@@ -28,9 +29,10 @@ void AdminMenu::execute() {
   getline(std::cin, pin);
   tui::enable_echo();
   if (ps_->checkAdminPIN(pin)) {
-    menu_->render();
+    std::ostringstream parent{};
+    menu_->render(parent);
   } else {
-    cout << "Incorrect PIN." << '\n';
+    out << "Incorrect PIN." << '\n';
   }
 }
 

@@ -2,21 +2,23 @@
 #include "tui.h"
 #include <iostream>
 #include <limits>
+#include <sstream>
 
 namespace Menu {
-void Menu::render() {
+void Menu::render(std::ostringstream &out) {
   should_exit_ = 0;
   while (!should_exit_) {
     clrscr();
     renderHeader();
     renderOptions();
+    std::cout << output_;
     /* renderFooter(); */
     auto selected_option = readInput();
     if (selected_option) {
       /* Need to clear the newline left in stdin */
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-      selected_option->execute();
-      std::cout << '\n';
+      selected_option->execute(out);
+      output_ = out.str();
     }
   }
 }

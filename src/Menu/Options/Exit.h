@@ -1,6 +1,7 @@
 #pragma once
 #include "Menu.h"
 #include "Menu/Option.h"
+#include <sstream>
 
 namespace GenericMenu {
 class Exit : public Menu::Option {
@@ -9,7 +10,7 @@ private:
 
 public:
   Exit(Menu::Menu *m);
-  void execute() override;
+  void execute(std::ostringstream &out) override;
   ~Exit() = default;
 };
 } // namespace GenericMenu

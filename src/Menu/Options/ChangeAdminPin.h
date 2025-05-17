@@ -1,6 +1,7 @@
 #pragma once
 #include "Menu/Option.h"
 #include "Paystation.h"
+#include <sstream>
 
 namespace AdministratorMenu {
 class ChangeAdminPIN : public Menu::Option {
@@ -9,7 +10,7 @@ private:
 
 public:
   ChangeAdminPIN(Paystation *ps);
-  void execute() override;
+  void execute(std::ostringstream &out) override;
   ~ChangeAdminPIN() = default;
 };
 } // namespace AdministratorMenu

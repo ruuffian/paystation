@@ -9,7 +9,7 @@ namespace AdministratorMenu {
 ChangeAdminPIN::ChangeAdminPIN(Paystation *ps)
     : Menu::Option("Change PIN"), ps_(ps) {}
 
-void ChangeAdminPIN::execute() {
+void ChangeAdminPIN::execute(std::ostringstream &out) {
   /* Check Admin PIN */
   std::string current_pin;
   std::cout << "Current PIN: ";
@@ -28,20 +28,20 @@ void ChangeAdminPIN::execute() {
     std::getline(std::cin, new_pin2);
     tui::enable_echo();
     if (new_pin1 != new_pin2) {
-      std::cout << '\n' << "PINs do not match." << '\n';
+      out << '\n' << "PINs do not match." << '\n';
     } else {
       int res;
       if ((res = ps_->setAdminPIN(new_pin1)) == 0) {
-        std::cout << '\n' << "Successfully updated PIN." << '\n';
+        out << '\n' << "Successfully updated PIN." << '\n';
       } else {
-        res == ERR_SAME_PIN ? std::cout << '\n'
-                                        << "Can't re-use PIN." << '\n'
-                            : std::cout << '\n'
-                                        << "Failed to update PIN." << '\n';
+        res == ERR_SAME_PIN ? out << '\n'
+                                  << "Can't re-use PIN." << '\n'
+                            : out << '\n'
+                                  << "Failed to update PIN." << '\n';
       }
     }
   } else {
-    std::cout << '\n' << "Incorrect PIN." << '\n';
+    out << '\n' << "Incorrect PIN." << '\n';
   }
 }
 } // namespace AdministratorMenu
