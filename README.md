@@ -19,11 +19,6 @@
 <h3 align="center">paystation</h3>
 
   <p align="center">
-This is tied as the most memorable lab that I did in college (the first is 
-the shell lab in Operating Systems), despite it's relative simplicity. It 
-re-introduced a lot of OOP-concepts that I thought I understood, but did not.
-riginal lab was done in Java, but I have decided to revisit it to teach myself 
-C++ (and, apparently, CMake).
     <br />
     <a href="https://github.com/ruuffian/paystation"><strong>Explore the docs »</strong></a>
     <br />
@@ -70,6 +65,12 @@ C++ (and, apparently, CMake).
 ## About The Project
 
 
+This is tied as the most memorable lab that I did in college (the first is 
+the shell lab in Operating Systems), despite it's relative simplicity. It 
+re-introduced a lot of OOP-concepts that I thought I understood, but did not.
+riginal lab was done in Java, but I have decided to revisit it to teach myself 
+C++ (and, apparently, CMake).
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -91,6 +92,7 @@ To build and run the project, perform the following:
 ### Prerequisites
 
 * cmake
+
 `https://cmake.org/download/`
 
 ### Installation
@@ -99,18 +101,9 @@ To build and run the project, perform the following:
    ```sh
    git clone https://github.com/ruuffian/paystation.git
    ```
-2. 
-   ```sh
-   cd build/
-   ```
-3.
-   ```sh
-   cmake ..
-   ```
-4.
-   ```sh
-   make
-   ```
+2. `cd build/`
+3. `cmake ..`
+4. `make`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
