@@ -8,7 +8,7 @@ InsertCoin::InsertCoin(Paystation *ps) : Menu::Option("Insert Coin"), ps_(ps) {}
 void InsertCoin::execute(std::ostringstream &out) {
   using namespace std;
   cout << "Insert Coin: ";
-  Cents coin;
+  int coin;
   if (cin >> coin) {
     if (ps_->insertCoin(coin) != 0) {
       out << "Coin not recognized." << '\n';

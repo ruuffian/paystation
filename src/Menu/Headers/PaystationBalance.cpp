@@ -50,6 +50,6 @@ std::string format_money(int cents) {
   if (fractional < 10) {
     total << "0";
   }
-  total << cents;
+  total << fractional;
   return total.str();
 }
