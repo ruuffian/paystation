@@ -5,7 +5,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_BUILD_TYPE Debug)
 
-add_subdirectory( lib/paystation )
+include( CTest )
+add_subdirectory( lib )
 
 set( 
   SOURCES 
@@ -35,13 +36,6 @@ set(
 )
 
 add_executable( main.exe ${SOURCES} ${INCLUDES} )
-
 target_include_directories(main.exe PRIVATE include include/Menu)
-
 target_link_libraries( main.exe PRIVATE paystation )
-
-if(UNIX)
-  target_compile_options(main.exe PRIVATE -Wall -Wextra -Wpedantic -Werror)
-else()
-  target_compile_options(main.exe PRIVATE /W4 /WX)
-endif()
+target_compile_options(main.exe PRIVATE -Wall -Wextra -Wpedantic -Werror)

@@ -16,16 +16,30 @@ set(
   include/Paystrategies/FixedLinearRate.h
 )
 
+include(CTest)
+add_subdirectory(
+  external
+)
+
 add_library( 
   paystation
-  SHARED
+  STATIC 
   ${SOURCES}
   ${INCLUDES}
 )
 target_include_directories( paystation PUBLIC include )
+target_compile_options(paystation PRIVATE -Wall -Wextra -Wpedantic -Werror)
 
-if(UNIX)
-  target_compile_options(paystation PRIVATE -Wall -Wextra -Wpedantic -Werror)
-else()
-  target_compile_options(paystation PRIVATE /W4 /WX)
+if(BUILD_TESTING)
+  set(
+    UNIT_TESTS
+    src/Paystation.test.cpp
+    src/Paystrategies/FixedLinearRate.test.cpp
+  )
+  add_executable( unit_tests ${UNIT_TESTS} ${SOURCES} ${INCLUDES} )
+  target_link_libraries( unit_tests PRIVATE GTest::gtest_main )
+  target_include_directories( unit_tests PUBLIC include )
+  
+  include(GoogleTest)
+  gtest_discover_tests(unit_tests)
 endif()
